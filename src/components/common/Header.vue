@@ -1,12 +1,21 @@
 <script setup>
+import { ref } from "vue";
 import store from "@/scripts/store";
 import router from "@/scripts/router";
 import axios from "axios";
+import Modal from "@/components/common/Modal";
+
+const showModal = ref(false);
+
 function logout() {
     axios.post("/api/account/logout").then(() => {
         store.commit("setAccount", 0);
         router.push({ path: "/mobileoffice" });
     });
+}
+
+function open() {
+    showModal.value = true;
 }
 </script>
 <template>
@@ -23,7 +32,7 @@ function logout() {
                         admin
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">비밀번호 변경</a></li>
+                        <li><a class="dropdown-item" href="#" @click="open">비밀번호 변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#" @click="logout">로그아웃</a></li>
                     </ul>
@@ -45,6 +54,8 @@ function logout() {
                 </div>
             </nav>
         </div>
+        <Modal :show="showModal" @close="showModal = false"></Modal>
+        <!-- <ComfirmationModal ref="modal" :content="modalContent" /> -->
     </header>
 </template>
 
