@@ -1,10 +1,17 @@
-<template>
-    <Header></Header>
-</template>
-
 <script setup>
 import Header from "@/components/common/Header";
+// import Map from "@/components/Map.vue";
+import MapLeaflet from "@/components/MapLeaflet.vue";
+// import SideMenu from "@/components/SideMenu.vue";
 </script>
+<template>
+    <Header></Header>
+    <div class="office">
+        <!-- <Map></Map>
+        <SideMenu></SideMenu> -->
+        <MapLeaflet></MapLeaflet>
+    </div>
+</template>
 
 <style>
 .office {

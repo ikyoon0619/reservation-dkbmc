@@ -55,7 +55,6 @@ function open() {
             </nav>
         </div>
         <Modal :show="showModal" @close="showModal = false"></Modal>
-        <!-- <ComfirmationModal ref="modal" :content="modalContent" /> -->
     </header>
 </template>
 
